@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Snake</string>
+    <string name="up_name">up</string>
+    <string name="down_name">down</string>
+    <string name="left_name">left</string>
+    <string name="right_name">right</string>
+</resources>
