@@ -70,6 +70,7 @@ public class DrawThread extends Thread{
 
     public void gameover(Canvas canvas) throws InterruptedException {
         Content.snake.CreateSnake();
+        Content.food.CreateFood();
         Thread.sleep(500);
     }
 
