@@ -27,7 +27,7 @@ public class Snake {
         themes[10] = "Time Snake";
     }
 
-    public void colors(){
+    public void Create_colors(){
         fill_color[0] = "#6D6E71";
         fill_color[1] = "#BEF761";
         fill_color[2] = "#64C7FF";
@@ -57,31 +57,33 @@ public class Snake {
     }
 
     public void Move(){
-        for (int i = length - 1; i > 0; i--){
-            xy[i][0] = xy[i - 1][0];
-            xy[i][1] = xy[i - 1][1];
-        }
+        if (!Content.game_methods.pause_flag) {    // 暂停判断
+            for (int i = length - 1; i > 0; i--) {
+                xy[i][0] = xy[i - 1][0];
+                xy[i][1] = xy[i - 1][1];
+            }
 
-        switch (position){
-            case 'u':
-                xy[0][1] -= 40;
-                break;
-            case 'd':
-                xy[0][1] += 40;
-                break;
-            case 'l':
-                xy[0][0] -= 40;
-                break;
-            case 'r':
-                xy[0][0] += 40;
-                break;
+            switch (position) {
+                case 'u':
+                    xy[0][1] -= 40;
+                    break;
+                case 'd':
+                    xy[0][1] += 40;
+                    break;
+                case 'l':
+                    xy[0][0] -= 40;
+                    break;
+                case 'r':
+                    xy[0][0] += 40;
+                    break;
+            }
         }
     }
 
     public void EatFood(){
         if (xy[0][0] == Content.food.x && xy[0][1] == Content.food.y){
             length++;
-            Content.food.foodsymbol = 0;
+            Content.food.food_symbol = 0;
             score += 10;
             if (speed > 50) speed -= 5;
             if (theme + 1 == 11) theme = 0;

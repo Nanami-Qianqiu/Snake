@@ -4,10 +4,12 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.widget.Button;
+import android.widget.ImageButton;
 
 public class MainActivity extends AppCompatActivity {
 
     Button up, down, left, right;
+    ImageButton pause;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -16,21 +18,28 @@ public class MainActivity extends AppCompatActivity {
         down = findViewById(R.id.Down);
         left = findViewById(R.id.Left);
         right = findViewById(R.id.Right);
+        pause = findViewById(R.id.Pause);
+
+        // pause button
+        pause.setOnClickListener(v -> {
+            if (!Content.game_methods.pause_flag) Content.game_methods.pause_flag = true;
+            else Content.game_methods.pause_flag = false;
+        });
         // up button
         up.setOnClickListener(v -> {
-            if (Content.snake.position != 'd') Content.snake.position = 'u';
+            if (Content.snake.position != 'd' && !Content.game_methods.pause_flag) Content.snake.position = 'u';
         });
         // down button
         down.setOnClickListener(v -> {
-            if (Content.snake.position != 'u') Content.snake.position = 'd';
+            if (Content.snake.position != 'u' && !Content.game_methods.pause_flag) Content.snake.position = 'd';
         });
         // left button
         left.setOnClickListener(v -> {
-            if (Content.snake.position != 'r') Content.snake.position = 'l';
+            if (Content.snake.position != 'r' && !Content.game_methods.pause_flag) Content.snake.position = 'l';
         });
         // right button
         right.setOnClickListener(v -> {
-            if (Content.snake.position != 'l') Content.snake.position = 'r';
+            if (Content.snake.position != 'l' && !Content.game_methods.pause_flag) Content.snake.position = 'r';
         });
     }
 }
